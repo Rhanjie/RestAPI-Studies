@@ -16,7 +16,7 @@ INSERT INTO `user` (`name`, `surname`, `pesel`) VALUES
     ('Krzysztof', 'Jarzyna', 123456789),
     ('Hugh', 'Jackman', 628496496);
 
-INSERT INTO `payment` ( `id_user`, `name`, `borrowDate`, `expirationDate`) VALUES
+INSERT INTO `payment` ( `id_user`, `name`, `borrow_date`, `expiration_date`) VALUES
     (1, 'PRower', '2020-02-02 12:32:00', '2020-02-04 00:00:00'),
     (2, 'PHulajnoga', '2020-03-02 04:10:40', '2020-03-03 00:00:00'),
     (1, 'PRower', '2020-02-04 01:05:12', '2020-02-05 00:00:00'),
@@ -33,7 +33,7 @@ INSERT INTO `payment` ( `id_user`, `name`, `borrowDate`, `expirationDate`) VALUE
     (9, 'PDeskorolka', '2020-05-20 12:00:02', '2020-05-21 00:00:00'),
     (10, 'PRower', '2020-06-01 11:05:45', '2020-06-01 23:59:59');
 
-INSERT INTO `equipment` (`id_type`, `model`, `producer`, `maximumLoad`, `weight`, `range`, `batteryCapacity`) VALUES
+INSERT INTO `equipment` (`id_type`, `model`, `producer`, `maximum_load`, `weight`, `range`, `battery_capacity`) VALUES
     (1, 'Wigry', 'Romet', 90, '5.00', null, null),
     (1, 'Art', 'Romet', 90, '5.00', null, null),
     (4, 'Classic', 'Enuff', 80, '0.50', null, null),
