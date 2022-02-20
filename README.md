@@ -3,7 +3,7 @@
   <p align="center">
     Team project for studies
     <br />
-    <a href="https://github.com/Rhanjie/RestAPI-Studies"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Rhanjie/RestAPI-Studies/blob/feature/BasicBehaviour/docs/documentation.md"><strong>Explore the docs »</strong></a>
     <br />
 </p>
 </div>
