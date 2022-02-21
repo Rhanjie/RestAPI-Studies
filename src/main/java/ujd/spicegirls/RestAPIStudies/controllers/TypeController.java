@@ -1,6 +1,7 @@
 package ujd.spicegirls.RestAPIStudies.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,13 +19,13 @@ public class TypeController {
     private final TypeService typeService;
 
     @GetMapping("/types")
-    public List<TypeDto> getEquipmentTypes(@RequestParam(required = false) int page) {
-        return TypeDtoMapper.mapToTypeDtos(typeService.getEquipmentTypes(Math.abs(page)));
+    public List<TypeDto> getEquipmentTypes(@RequestParam(required = false) int page, Sort.Direction sort) {
+        return TypeDtoMapper.mapToTypeDtos(typeService.getEquipmentTypes(Math.abs(page), sort));
     }
 
     @GetMapping("/types/equipments")
-    public List<Type> getTypesWithEquipments(@RequestParam(required = false) int page) {
-        return typeService.getTypesWithEquipments(Math.abs(page));
+    public List<Type> getTypesWithEquipments(@RequestParam(required = false) int page, Sort.Direction sort) {
+        return typeService.getTypesWithEquipments(Math.abs(page), sort);
     }
 
     @GetMapping("/types/{id}")

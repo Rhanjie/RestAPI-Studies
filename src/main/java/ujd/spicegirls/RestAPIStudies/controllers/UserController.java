@@ -1,6 +1,7 @@
 package ujd.spicegirls.RestAPIStudies.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,13 +17,13 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/users")
-    public List<UserDto> getUsers(@RequestParam(required = false) int page) {
-        return UserDtoMapper.mapToUserDtos(userService.getUsers(Math.abs(page)));
+    public List<UserDto> getUsers(@RequestParam(required = false) int page, Sort.Direction sort) {
+        return UserDtoMapper.mapToUserDtos(userService.getUsers(Math.abs(page), sort));
     }
 
     @GetMapping("/users/payments")
-    public List<User> getUsersWithPayments(@RequestParam(required = false) int page) {
-        return userService.getUsersWithPayments(Math.abs(page));
+    public List<User> getUsersWithPayments(@RequestParam(required = false) int page, Sort.Direction sort) {
+        return userService.getUsersWithPayments(Math.abs(page), sort);
     }
 
     @GetMapping("/users/{id}")

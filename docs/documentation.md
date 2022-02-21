@@ -45,7 +45,12 @@ The used database has the same structure as in the screenshot below:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Example endpoints:
+## Example requests:
+
+Get the second page of sorted types with equipments in descending order
+```
+curl -X GET "http://localhost:8080/types/equipments?page=1&sort=DESC" -H "accept: */*"
+```
 
 TODO: Finish this section
 

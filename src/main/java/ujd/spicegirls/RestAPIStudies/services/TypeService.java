@@ -2,6 +2,7 @@ package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ujd.spicegirls.RestAPIStudies.models.Equipment;
 import ujd.spicegirls.RestAPIStudies.models.Payment;
@@ -21,12 +22,12 @@ public class TypeService {
 
     private static final int PAGE_SIZE = 5;
 
-    public List<Type> getEquipmentTypes(int page) {
-        return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE));
+    public List<Type> getEquipmentTypes(int page, Sort.Direction sort) {
+        return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
-    public List<Type> getTypesWithEquipments(int page) {
-        var types = typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE));
+    public List<Type> getTypesWithEquipments(int page, Sort.Direction sort) {
+        var types = typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
         var ids = types.stream()
                 .map(Type::getId)
                 .collect(Collectors.toList());

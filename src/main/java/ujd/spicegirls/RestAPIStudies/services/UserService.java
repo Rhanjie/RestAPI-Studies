@@ -1,7 +1,9 @@
 package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
+import org.hibernate.criterion.Order;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.UserDto;
 import ujd.spicegirls.RestAPIStudies.models.Payment;
@@ -20,12 +22,12 @@ public class UserService {
 
     private static final int PAGE_SIZE = 5;
 
-    public List<User> getUsers(int page) {
-        return userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE));
+    public List<User> getUsers(int page, Sort.Direction sort) {
+        return userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
-    public List<User> getUsersWithPayments(int page) {
-        var users = userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE));
+    public List<User> getUsersWithPayments(int page, Sort.Direction sort) {
+        var users = userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
         var ids = users.stream()
                 .map(User::getId)
                 .collect(Collectors.toList());
