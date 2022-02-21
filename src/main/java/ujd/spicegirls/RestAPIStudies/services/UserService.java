@@ -13,8 +13,10 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    public List<User> getUsers() {
-        return userRepository.findAllUsers(PageRequest.of(0, 5));
+    private static final int PAGE_SIZE = 5;
+
+    public List<User> getUsers(int page) {
+        return userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE));
     }
 
     public User getSingleUser(long id) {

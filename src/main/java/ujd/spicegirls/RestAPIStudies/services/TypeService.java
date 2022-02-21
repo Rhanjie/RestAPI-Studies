@@ -14,8 +14,10 @@ import java.util.List;
 public class TypeService {
     private final TypeRepository typeRepository;
 
-    public List<Type> getEquipmentTypes() {
-        return typeRepository.findAllTypes(PageRequest.of(0, 5));
+    private static final int PAGE_SIZE = 5;
+
+    public List<Type> getEquipmentTypes(int page) {
+        return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE));
     }
 
     public Type getSingleEquipmentType(long id) {
