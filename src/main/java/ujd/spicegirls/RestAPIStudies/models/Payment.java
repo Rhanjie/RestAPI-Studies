@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 public class Payment {
     @Id
     private long id;
+    private long idUser;
     private String name;
     private LocalDateTime borrowDate;
     private LocalDateTime expirationDate;

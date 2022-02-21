@@ -20,6 +20,6 @@ public class User {
     private long pesel;
 
     @OneToMany
-    @JoinColumn(name = "id_user")
+    @JoinColumn(name = "idUser")
     private List<Payment> payments;
 }
