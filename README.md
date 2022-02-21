@@ -51,7 +51,7 @@ The project uses several libraries that allow you to speed up the work on the ta
 * [Spring](https://spring.io/)
 * [Lombok](https://projectlombok.org/)
 * [H2 Database Engine](https://www.h2database.com/)
-* [JPA](https://spring.io/projects/spring-data-jpa#learn)
+* [Hibernate JPA](https://hibernate.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
