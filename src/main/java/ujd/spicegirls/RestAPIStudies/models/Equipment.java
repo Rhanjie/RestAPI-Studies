@@ -12,6 +12,7 @@ import javax.persistence.Id;
 public class Equipment {
     @Id
     private long id;
+    private long idType;
     private String model;
     private String producer;
     private int maximumLoad;

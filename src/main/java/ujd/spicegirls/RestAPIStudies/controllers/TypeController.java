@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.TypeDto;
 import ujd.spicegirls.RestAPIStudies.models.Type;
+import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.services.TypeService;
 
 import java.util.List;
@@ -19,6 +20,11 @@ public class TypeController {
     @GetMapping("/types")
     public List<TypeDto> getEquipmentTypes(@RequestParam(required = false) int page) {
         return TypeDtoMapper.mapToTypeDtos(typeService.getEquipmentTypes(Math.abs(page)));
+    }
+
+    @GetMapping("/types/equipments")
+    public List<Type> getTypesWithEquipments(@RequestParam(required = false) int page) {
+        return typeService.getTypesWithEquipments(Math.abs(page));
     }
 
     @GetMapping("/types/{id}")
