@@ -1,6 +1,7 @@
 package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.repositories.UserRepository;
@@ -13,7 +14,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public List<User> getUsers() {
-        return userRepository.findAll();
+        return userRepository.findAllUsers(PageRequest.of(0, 5));
     }
 
     public User getSingleUser(long id) {

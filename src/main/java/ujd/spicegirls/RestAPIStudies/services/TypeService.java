@@ -1,6 +1,7 @@
 package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import ujd.spicegirls.RestAPIStudies.models.Equipment;
 import ujd.spicegirls.RestAPIStudies.models.Type;
@@ -14,7 +15,7 @@ public class TypeService {
     private final TypeRepository typeRepository;
 
     public List<Type> getEquipmentTypes() {
-        return typeRepository.findAll();
+        return typeRepository.findAllTypes(PageRequest.of(0, 5));
     }
 
     public Type getSingleEquipmentType(long id) {
