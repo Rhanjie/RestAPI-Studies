@@ -3,7 +3,7 @@
   <p align="center">
     Team project for studies
     <br />
-    <a href="https://github.com/Rhanjie/RestAPI-Studies/blob/feature/BasicBehaviour/docs/documentation.md"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Rhanjie/RestAPI-Studies/blob/master/docs/documentation.md"><strong>Explore the docs »</strong></a>
     <br />
 </p>
 </div>
@@ -51,7 +51,7 @@ The project uses several libraries that allow you to speed up the work on the ta
 * [Spring](https://spring.io/)
 * [Lombok](https://projectlombok.org/)
 * [H2 Database Engine](https://www.h2database.com/)
-* [JPA](https://spring.io/projects/spring-data-jpa#learn)
+* [Hibernate JPA](https://hibernate.org/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -95,7 +95,12 @@ To use the H2 database, go to the appropriate address and log in without changin
 http://localhost:8080/h2-console
 ```
 
-_For more examples, please refer to the [Documentation](https://github.com/Rhanjie/RestAPI-Studies)_
+To use the Swagger tool to test the available endpoints, go to the address below:
+```
+http://localhost:8080/swagger-ui.html#/
+```
+
+_For more examples, please refer to the [Documentation](https://github.com/Rhanjie/RestAPI-Studies/blob/master/docs/documentation.md)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

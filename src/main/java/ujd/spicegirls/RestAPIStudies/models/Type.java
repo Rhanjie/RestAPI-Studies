@@ -9,15 +9,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class User {
+public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private String surname;
-    private long pesel;
+    private float weight;
 
     @OneToMany(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "idUser", updatable = false, insertable = false)
-    private List<Payment> payments;
+    @JoinColumn(name = "idType", updatable = false, insertable = false)
+    private List<Equipment> equipments;
 }
