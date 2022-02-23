@@ -15,6 +15,7 @@ GET http://localhost:8080/users/5
 GET http://localhost:8080/types/equipments?page=1&sort=DESC
 
 POST "http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Testowy\", \"pesel\": 123456789, \"surname\": \"uzytkownik\"}"
+PUT "http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Andrzej\", \"surname\": \"Gołota\", \"pesel\": 987654321}"
 ```
 
 ![alt text](api_info.jpg)

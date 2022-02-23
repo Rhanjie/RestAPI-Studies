@@ -17,6 +17,6 @@ public class Type {
     private float weight;
 
     @OneToMany
-    @JoinColumn(name = "idType")
+    @JoinColumn(name = "idType", updatable = false, insertable = false)
     private List<Equipment> equipments;
 }

@@ -5,6 +5,7 @@ import org.hibernate.criterion.Order;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.UserDto;
 import ujd.spicegirls.RestAPIStudies.models.Payment;
 import ujd.spicegirls.RestAPIStudies.models.User;
@@ -51,5 +52,16 @@ public class UserService {
 
     public User createUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Transactional
+    public User updateUser(User user) {
+        User updatingUser = userRepository.findById(user.getId()).orElseThrow();
+
+        updatingUser.setName(user.getName());
+        updatingUser.setSurname(user.getSurname());
+        updatingUser.setPesel(user.getPesel());
+
+        return updatingUser;
     }
 }

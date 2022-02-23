@@ -18,6 +18,6 @@ public class User {
     private long pesel;
 
     @OneToMany
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "idUser", updatable = false, insertable = false)
     private List<Payment> payments;
 }

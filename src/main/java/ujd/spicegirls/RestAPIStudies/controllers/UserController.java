@@ -38,4 +38,9 @@ public class UserController {
     public User createUser(@RequestBody User user) {
         return userService.createUser(user);
     }
+
+    @PutMapping("/users")
+    public User updateUser(@RequestBody User user) {
+        return userService.updateUser(user);
+    }
 }
