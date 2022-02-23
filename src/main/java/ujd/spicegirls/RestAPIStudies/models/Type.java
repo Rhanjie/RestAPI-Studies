@@ -16,7 +16,7 @@ public class Type {
     private String name;
     private float weight;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idType", updatable = false, insertable = false)
     private List<Equipment> equipments;
 }

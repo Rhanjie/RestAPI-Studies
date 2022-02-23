@@ -17,7 +17,7 @@ public class User {
     private String surname;
     private long pesel;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idUser", updatable = false, insertable = false)
     private List<Payment> payments;
 }
