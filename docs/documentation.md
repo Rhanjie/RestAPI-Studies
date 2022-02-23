@@ -11,8 +11,10 @@
 Communication with the database is based on the requests in the form of appropriate urls:
 ```http://<server-ip>:<port>/<endpoint>```, for example:
 ```
-GET http://localhost:8080/payments/1/users/5
-POST http://localhost:8080/equipment/
+GET http://localhost:8080/users/5
+GET http://localhost:8080/types/equipments?page=1&sort=DESC
+
+POST "http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Testowy\", \"pesel\": 123456789, \"surname\": \"uzytkownik\"}"
 ```
 
 ![alt text](api_info.jpg)
