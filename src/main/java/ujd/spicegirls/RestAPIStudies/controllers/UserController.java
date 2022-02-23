@@ -17,13 +17,19 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/users")
-    public List<UserDto> getUsers(@RequestParam(required = false) int page, Sort.Direction sort) {
-        return UserDtoMapper.mapToUserDtos(userService.getUsers(Math.abs(page), sort));
+    public List<UserDto> getUsers(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+        int pageNumber = (page != null) ? Math.abs(page) : 0;
+        Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
+
+        return UserDtoMapper.mapToUserDtos(userService.getUsers(pageNumber, sortDirection));
     }
 
     @GetMapping("/users/payments")
-    public List<User> getUsersWithPayments(@RequestParam(required = false) int page, Sort.Direction sort) {
-        return userService.getUsersWithPayments(Math.abs(page), sort);
+    public List<User> getUsersWithPayments(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+        int pageNumber = (page != null) ? Math.abs(page) : 0;
+        Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
+
+        return userService.getUsersWithPayments(pageNumber, sortDirection);
     }
 
     @GetMapping("/users/{id}")

@@ -19,13 +19,19 @@ public class TypeController {
     private final TypeService typeService;
 
     @GetMapping("/types")
-    public List<TypeDto> getEquipmentTypes(@RequestParam(required = false) int page, Sort.Direction sort) {
-        return TypeDtoMapper.mapToTypeDtos(typeService.getEquipmentTypes(Math.abs(page), sort));
+    public List<TypeDto> getEquipmentTypes(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+        int pageNumber = (page != null) ? Math.abs(page) : 0;
+        Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
+
+        return TypeDtoMapper.mapToTypeDtos(typeService.getEquipmentTypes(pageNumber, sortDirection));
     }
 
     @GetMapping("/types/equipments")
-    public List<Type> getTypesWithEquipments(@RequestParam(required = false) int page, Sort.Direction sort) {
-        return typeService.getTypesWithEquipments(Math.abs(page), sort);
+    public List<Type> getTypesWithEquipments(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+        int pageNumber = (page != null) ? Math.abs(page) : 0;
+        Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
+
+        return typeService.getTypesWithEquipments(pageNumber, sortDirection);
     }
 
     @GetMapping("/types/{id}")
