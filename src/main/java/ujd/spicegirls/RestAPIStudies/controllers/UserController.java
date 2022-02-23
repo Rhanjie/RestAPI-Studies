@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.UserDto;
+import ujd.spicegirls.RestAPIStudies.models.Payment;
 import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.services.UserService;
 import java.util.List;
@@ -39,13 +40,28 @@ public class UserController {
         return userService.createUser(user);
     }
 
+    @PostMapping("/users/payments")
+    public Payment createPayment(@RequestBody Payment payment) {
+        return userService.createPayment(payment);
+    }
+
     @PutMapping("/users")
     public User updateUser(@RequestBody User user) {
         return userService.updateUser(user);
     }
 
+    @PutMapping("/users")
+    public Payment updatePayment(@RequestBody Payment payment) {
+        return userService.updatePayment(payment);
+    }
+
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);
+    }
+
+    @DeleteMapping("/users/payments/{id}")
+    public void deletePayment(@PathVariable long id) {
+        userService.deletePayment(id);
     }
 }

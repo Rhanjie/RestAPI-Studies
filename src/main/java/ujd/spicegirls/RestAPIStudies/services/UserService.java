@@ -54,6 +54,10 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public Payment createPayment(Payment payment) {
+        return paymentRepository.save(payment);
+    }
+
     @Transactional
     public User updateUser(User user) {
         User updatingUser = userRepository.findById(user.getId()).orElseThrow();
@@ -65,7 +69,21 @@ public class UserService {
         return updatingUser;
     }
 
+    @Transactional
+    public Payment updatePayment(Payment payment) {
+        Payment updatingPayment = paymentRepository.findById(payment.getId()).orElseThrow();
+
+        updatingPayment.setName(payment.getName());
+        updatingPayment.setExpirationDate(payment.getSurname());
+
+        return updatingPayment;
+    }
+
     public void deleteUser(long id) {
         userRepository.deleteById(id);
+    }
+
+    public void deletePayment(long id) {
+        paymentRepository.deleteById(id);
     }
 }
