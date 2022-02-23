@@ -2,10 +2,7 @@ package ujd.spicegirls.RestAPIStudies.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.UserDto;
 import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.services.UserService;
@@ -35,5 +32,10 @@ public class UserController {
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable long id) {
         return userService.getSingleUser(id);
+    }
+
+    @PostMapping("/users")
+    public User createUser(@RequestBody User user) {
+        return userService.createUser(user);
     }
 }

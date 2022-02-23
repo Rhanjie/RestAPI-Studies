@@ -48,4 +48,8 @@ public class UserService {
                 .filter(payment -> payment.getIdUser() == id)
                 .collect(Collectors.toList());
     }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
 }
