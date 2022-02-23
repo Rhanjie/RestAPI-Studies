@@ -11,8 +11,17 @@
 Communication with the database is based on the requests in the form of appropriate urls:
 ```http://<server-ip>:<port>/<endpoint>```, for example:
 ```
-GET http://localhost:8080/payments/1/users/5
-POST http://localhost:8080/equipment/
+GET http://localhost:8080/users/5
+GET http://localhost:8080/types/equipments?page=1&sort=DESC
+
+POST http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Testowy\", \"pesel\": 123456789, \"surname\": \"uzytkownik\"}"
+POST "http://localhost:8080/types/equipments" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"batteryCapacity\": \"100\", \"idType\": 1, \"maximumLoad\": 500, \"model\": \"Super x\", \"producer\": \"Xin-Zao\", \"range\": \"20\", \"weight\": 5.00}
+
+PUT http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Andrzej\", \"surname\": \"Gołota\", \"pesel\": 987654321}"
+PUT http://localhost:8080/types" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Rowerek\", \"weight\": 1, \"equipments\": [ { \"id\": 1, \"idType\": 1, \"model\": \"Wigry\", \"producer\": \"Romet\", \"maximumLoad\": 90, \"weight\": 5, \"range\": null, \"batteryCapacity\": null } ] }
+
+DELETE http://localhost:8080/users/payments/2
+DELETE "http://localhost:8080/types/3"
 ```
 
 ![alt text](api_info.jpg)
@@ -45,7 +54,12 @@ The used database has the same structure as in the screenshot below:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Example endpoints:
+## Example requests:
+
+Get the second page of sorted types with equipments in descending order
+```
+curl -X GET "http://localhost:8080/types/equipments?page=1&sort=DESC" -H "accept: */*"
+```
 
 TODO: Finish this section
 
