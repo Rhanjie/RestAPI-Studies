@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ujd.spicegirls.RestAPIStudies.models.Equipment;
 import ujd.spicegirls.RestAPIStudies.models.Payment;
 import ujd.spicegirls.RestAPIStudies.models.Type;
@@ -47,6 +48,47 @@ public class TypeService {
         return equipments.stream()
                 .filter(equipment -> equipment.getIdType() == id)
                 .collect(Collectors.toList());
+    }
+
+    public Type createEquipmentType(Type type) {
+        return typeRepository.save(type);
+    }
+
+    public Equipment createEquipment(Equipment equipment) {
+        return equipmentRepository.save(equipment);
+    }
+
+    @Transactional
+    public Type updateEquipmentType(Type type) {
+        Type updatingType = typeRepository.findById(type.getId()).orElseThrow();
+
+        updatingType.setName(type.getName());
+        updatingType.setWeight(type.getWeight());
+
+        return updatingType;
+    }
+
+    @Transactional
+    public Equipment updateEquipment(Equipment equipment) {
+        Equipment updatingEquipment = equipmentRepository.findById(equipment.getId()).orElseThrow();
+
+        updatingEquipment.setIdType(equipment.getIdType());
+        updatingEquipment.setModel(equipment.getModel());
+        updatingEquipment.setProducer(equipment.getProducer());
+        updatingEquipment.setMaximumLoad(equipment.getMaximumLoad());
+        updatingEquipment.setWeight(equipment.getWeight());
+        updatingEquipment.setRange(equipment.getRange());
+        updatingEquipment.setBatteryCapacity(equipment.getBatteryCapacity());
+
+        return updatingEquipment;
+    }
+
+    public void deleteEquipmentType(long id) {
+        typeRepository.deleteById(id);
+    }
+
+    public void deleteEquipment(long id) {
+        equipmentRepository.deleteById(id);
     }
 }
 

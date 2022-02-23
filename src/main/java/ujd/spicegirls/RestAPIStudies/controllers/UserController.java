@@ -50,7 +50,7 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @PutMapping("/users")
+    @PutMapping("/users/payments")
     public Payment updatePayment(@RequestBody Payment payment) {
         return userService.updatePayment(payment);
     }

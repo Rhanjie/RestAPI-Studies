@@ -2,11 +2,10 @@ package ujd.spicegirls.RestAPIStudies.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.TypeDto;
+import ujd.spicegirls.RestAPIStudies.models.Equipment;
+import ujd.spicegirls.RestAPIStudies.models.Payment;
 import ujd.spicegirls.RestAPIStudies.models.Type;
 import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.services.TypeService;
@@ -37,6 +36,36 @@ public class TypeController {
     @GetMapping("/types/{id}")
     public Type getSingleEquipmentType(@PathVariable long id) {
         return typeService.getSingleEquipmentType(id);
+    }
+
+    @PostMapping("/types")
+    public Type createEquipmentType(@RequestBody Type type) {
+        return typeService.createEquipmentType(type);
+    }
+
+    @PostMapping("/types/equipments")
+    public Equipment createEquipment(@RequestBody Equipment equipment) {
+        return typeService.createEquipment(equipment);
+    }
+
+    @PutMapping("/types")
+    public Type updateEquipmentType(@RequestBody Type type) {
+        return typeService.updateEquipmentType(type);
+    }
+
+    @PutMapping("/types/equipments")
+    public Equipment updateEquipment(@RequestBody Equipment equipment) {
+        return typeService.updateEquipment(equipment);
+    }
+
+    @DeleteMapping("/types/{id}")
+    public void deleteEquipmentType(@PathVariable long id) {
+        typeService.deleteEquipmentType(id);
+    }
+
+    @DeleteMapping("/types/equipments/{id}")
+    public void deleteEquipment(@PathVariable long id) {
+        typeService.deleteEquipment(id);
     }
 }
 
