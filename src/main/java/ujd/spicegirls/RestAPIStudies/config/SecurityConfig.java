@@ -18,6 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
     private final ObjectMapper objectMapper;
 
+    private final RestAuthenticationSuccessHandler successHandler;
+    private final RestAuthenticationFailureHandler failureHandler;
+
     @Override
     protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
         authentication.jdbcAuthentication()
@@ -40,13 +43,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll()
-                .and()
+                .addFilter(authenticationFilter())
                 .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
     }
 
     public JsonObjectAuthenticationFilter authenticationFilter() throws Exception {
-        throw new Exception("Not implemented yed!");
+        var authenticationFilter = new JsonObjectAuthenticationFilter(objectMapper);
+
+        authenticationFilter.setAuthenticationSuccessHandler(successHandler);
+        authenticationFilter.setAuthenticationFailureHandler(failureHandler);
+        authenticationFilter.setAuthenticationManager(super.authenticationManager());
+
+        return authenticationFilter;
     }
 }

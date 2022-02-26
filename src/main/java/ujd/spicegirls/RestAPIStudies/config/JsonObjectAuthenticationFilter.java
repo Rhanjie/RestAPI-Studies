@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class JsonObjectAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    private final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
