@@ -1,5 +1,6 @@
 package ujd.spicegirls.RestAPIStudies.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final DataSource dataSource;
+    private final ObjectMapper objectMapper;
 
     @Override
     protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
@@ -42,5 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
+    }
+
+    public JsonObjectAuthenticationFilter authenticationFilter() throws Exception {
+        throw new Exception("Not implemented yed!");
     }
 }
