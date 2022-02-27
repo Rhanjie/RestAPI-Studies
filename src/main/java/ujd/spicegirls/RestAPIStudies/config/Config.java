@@ -3,6 +3,7 @@ package ujd.spicegirls.RestAPIStudies.config;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.service.ApiKey;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
+@EnableCaching
 public class Config {
     @Bean
     public Docket swaggerApi() {

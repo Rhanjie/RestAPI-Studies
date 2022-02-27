@@ -2,6 +2,7 @@ package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
 import org.hibernate.criterion.Order;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,12 @@ public class UserService {
 
     private static final int PAGE_SIZE = 5;
 
+    @Cacheable(cacheNames = "Users")
     public List<User> getUsers(int page, Sort.Direction sort) {
         return userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
+    @Cacheable(cacheNames = "UsersWithPayments")
     public List<User> getUsersWithPayments(int page, Sort.Direction sort) {
         var users = userRepository.findAllUsers(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
         var ids = users.stream()
@@ -39,6 +42,7 @@ public class UserService {
         return users;
     }
 
+    @Cacheable(cacheNames = "SingleUser")
     public User getSingleUser(long id) {
         return userRepository.findById(id)
                 .orElseThrow();
