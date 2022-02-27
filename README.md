@@ -100,6 +100,14 @@ To use the Swagger tool to test the available endpoints, go to the address below
 http://localhost:8080/swagger-ui.html#/
 ```
 
+To be able to use endpoints and requests in swagger, log in with the appropriate credentials and paste the obtained token into the special field.
+<br>
+The test user is:
+```
+Nickname: test
+Password: test
+```
+
 _For more examples, please refer to the [Documentation](https://github.com/Rhanjie/RestAPI-Studies/blob/master/docs/documentation.md)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
