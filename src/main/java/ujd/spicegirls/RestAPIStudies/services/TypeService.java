@@ -1,6 +1,7 @@
 package ujd.spicegirls.RestAPIStudies.services;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,12 @@ public class TypeService {
 
     private static final int PAGE_SIZE = 5;
 
+    @Cacheable(cacheNames = "EquipmentTypes")
     public List<Type> getEquipmentTypes(int page, Sort.Direction sort) {
         return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
+    @Cacheable(cacheNames = "TypesWithEquipments")
     public List<Type> getTypesWithEquipments(int page, Sort.Direction sort) {
         var types = typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
         var ids = types.stream()
@@ -39,6 +42,7 @@ public class TypeService {
         return types;
     }
 
+    @Cacheable(cacheNames = "SingleEquipmentType")
     public Type getSingleEquipmentType(long id) {
         return typeRepository.findById(id)
                 .orElseThrow();
