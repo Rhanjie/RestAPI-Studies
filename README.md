@@ -125,7 +125,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact
 
 Marcin Dyla - [RhAnjiE](https://github.com/Rhanjie) - irhanjie@gmail.com
-<br>
-Norbert Ledwoch - [Quiloch](https://github.com/Quiloch)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
