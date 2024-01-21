@@ -25,7 +25,7 @@ http://localhost:8080/genres/books?page=1&sort=DESC
 
 The HTTP protocol provides many response statuses that we can provide to the client depending on the progress of their request. There are 5 basic groups:
 
-* 1xx – informations
+* 1xx – information
 * 2xx – success
 * 3xx – redirections
 * 4xx – client-side errors
@@ -51,11 +51,10 @@ The used database has the same structure as in the screenshot below:
 GET http://localhost:8080/users/5
 GET http://localhost:8080/genres/books?page=1&sort=DESC
 
-POST http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Testowy\", \"pesel\": 123456789, \"surname\": \"uzytkownik\"}"
-POST "http://localhost:8080/genres/books" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"batteryCapacity\": \"100\", \"idType\": 1, \"maximumLoad\": 500, \"model\": \"Super x\", \"producer\": \"Xin-Zao\", \"range\": \"20\", \"weight\": 5.00}
+POST http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"name\": \"Testowy\", \"pesel\": 123456789, \"surname\": \"uzytkownik\", \"age\": 21}"
+POST "http://localhost:8080/genres/books" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"title\": \"Gra o Tron\", \"idGenre\": 4, \"author\": \"George R. R. Martin\", \"publisher\": \"Wydawnictwo Zysk i S-ka\", \"year\": \"2011\", \"condition\": \"Idealny\"}
 
-PUT http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Andrzej\", \"surname\": \"Gołota\", \"pesel\": 987654321}"
-PUT http://localhost:8080/genres" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Rowerek\", \"weight\": 1, \"books\": [ { \"id\": 1, \"idType\": 1, \"model\": \"Wigry\", \"producer\": \"Romet\", \"maximumLoad\": 90, \"weight\": 5, \"range\": null, \"batteryCapacity\": null } ] }
+PUT http://localhost:8080/users" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"id\": 1, \"name\": \"Andrzej\", \"surname\": \"Gołota\", \"pesel\": 987654321, \"age\", 45"}
 
 DELETE http://localhost:8080/users/payments/2
 DELETE "http://localhost:8080/genres/3"
