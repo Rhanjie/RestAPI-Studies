@@ -7,7 +7,6 @@ import ujd.spicegirls.RestAPIStudies.config.LoginCredentials;
 
 @RestController
 public class LoginController {
-
     @PostMapping("/login")
     public void login(@RequestBody LoginCredentials credentials) {
 

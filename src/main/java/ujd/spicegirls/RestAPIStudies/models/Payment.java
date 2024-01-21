@@ -17,7 +17,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long idUser;
-    private String name;
+    private long idBook;
     private LocalDateTime borrowDate;
     private LocalDateTime expirationDate;
 }
