@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface GenreRepository extends JpaRepository<Genre, Long> {
-    @Query("Select p From Type p")
+    @Query("Select p From Genre p")
     List<Genre> findAllGenres(Pageable page);
 }
