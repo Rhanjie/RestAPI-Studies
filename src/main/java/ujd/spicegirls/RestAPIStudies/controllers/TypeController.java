@@ -5,7 +5,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.TypeDto;
 import ujd.spicegirls.RestAPIStudies.models.Book;
-import ujd.spicegirls.RestAPIStudies.models.Type;
+import ujd.spicegirls.RestAPIStudies.models.Genre;
 import ujd.spicegirls.RestAPIStudies.services.TypeService;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class TypeController {
     }
 
     @GetMapping("/types/equipments")
-    public List<Type> getTypesWithEquipments(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+    public List<Genre> getTypesWithEquipments(@RequestParam(required = false) Integer page, Sort.Direction sort) {
         int pageNumber = (page != null) ? Math.abs(page) : 0;
         Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
 
@@ -32,13 +32,13 @@ public class TypeController {
     }
 
     @GetMapping("/types/{id}")
-    public Type getSingleEquipmentType(@PathVariable long id) {
+    public Genre getSingleEquipmentType(@PathVariable long id) {
         return typeService.getSingleEquipmentType(id);
     }
 
     @PostMapping("/types")
-    public Type createEquipmentType(@RequestBody Type type) {
-        return typeService.createEquipmentType(type);
+    public Genre createEquipmentType(@RequestBody Genre genre) {
+        return typeService.createEquipmentType(genre);
     }
 
     @PostMapping("/types/equipments")
@@ -47,8 +47,8 @@ public class TypeController {
     }
 
     @PutMapping("/types")
-    public Type updateEquipmentType(@RequestBody Type type) {
-        return typeService.updateEquipmentType(type);
+    public Genre updateEquipmentType(@RequestBody Genre genre) {
+        return typeService.updateEquipmentType(genre);
     }
 
     @PutMapping("/types/equipments")

@@ -7,7 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ujd.spicegirls.RestAPIStudies.models.Book;
-import ujd.spicegirls.RestAPIStudies.models.Type;
+import ujd.spicegirls.RestAPIStudies.models.Genre;
 import ujd.spicegirls.RestAPIStudies.repositories.EquipmentRepository;
 import ujd.spicegirls.RestAPIStudies.repositories.TypeRepository;
 
@@ -23,15 +23,15 @@ public class TypeService {
     private static final int PAGE_SIZE = 5;
 
     @Cacheable(cacheNames = "EquipmentTypes")
-    public List<Type> getEquipmentTypes(int page, Sort.Direction sort) {
+    public List<Genre> getEquipmentTypes(int page, Sort.Direction sort) {
         return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
     @Cacheable(cacheNames = "TypesWithEquipments")
-    public List<Type> getTypesWithEquipments(int page, Sort.Direction sort) {
+    public List<Genre> getTypesWithEquipments(int page, Sort.Direction sort) {
         var types = typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
         var ids = types.stream()
-                .map(Type::getId)
+                .map(Genre::getId)
                 .collect(Collectors.toList());
 
         var equipments = equipmentRepository.findAllByIdTypeIn(ids);
@@ -41,7 +41,7 @@ public class TypeService {
     }
 
     @Cacheable(cacheNames = "SingleEquipmentType")
-    public Type getSingleEquipmentType(long id) {
+    public Genre getSingleEquipmentType(long id) {
         return typeRepository.findById(id)
                 .orElseThrow();
     }
@@ -52,8 +52,8 @@ public class TypeService {
                 .collect(Collectors.toList());
     }
 
-    public Type createEquipmentType(Type type) {
-        return typeRepository.save(type);
+    public Genre createEquipmentType(Genre genre) {
+        return typeRepository.save(genre);
     }
 
     public Book createEquipment(Book book) {
@@ -61,13 +61,13 @@ public class TypeService {
     }
 
     @Transactional
-    public Type updateEquipmentType(Type type) {
-        Type updatingType = typeRepository.findById(type.getId()).orElseThrow();
+    public Genre updateEquipmentType(Genre genre) {
+        Genre updatingGenre = typeRepository.findById(genre.getId()).orElseThrow();
 
-        updatingType.setName(type.getName());
-        updatingType.setWeight(type.getWeight());
+        updatingGenre.setName(genre.getName());
+        updatingGenre.setWeight(genre.getWeight());
 
-        return updatingType;
+        return updatingGenre;
     }
 
     @Transactional
