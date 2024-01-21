@@ -25,7 +25,7 @@ http://localhost:8080/types/equipments?page=1&sort=DESC
 
 The HTTP protocol provides many response statuses that we can provide to the client depending on the progress of their request. There are 5 basic groups:
 
-* 1xx – informations
+* 1xx – information
 * 2xx – success
 * 3xx – redirections
 * 4xx – client-side errors
