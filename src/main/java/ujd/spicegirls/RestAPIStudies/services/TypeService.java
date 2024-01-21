@@ -6,10 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ujd.spicegirls.RestAPIStudies.models.Equipment;
-import ujd.spicegirls.RestAPIStudies.models.Payment;
+import ujd.spicegirls.RestAPIStudies.models.Book;
 import ujd.spicegirls.RestAPIStudies.models.Type;
-import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.repositories.EquipmentRepository;
 import ujd.spicegirls.RestAPIStudies.repositories.TypeRepository;
 
@@ -48,9 +46,9 @@ public class TypeService {
                 .orElseThrow();
     }
 
-    private List<Equipment> extractEquipment(List<Equipment> equipments, long id) {
-        return equipments.stream()
-                .filter(equipment -> equipment.getIdType() == id)
+    private List<Book> extractEquipment(List<Book> books, long id) {
+        return books.stream()
+                .filter(book -> book.getIdType() == id)
                 .collect(Collectors.toList());
     }
 
@@ -58,8 +56,8 @@ public class TypeService {
         return typeRepository.save(type);
     }
 
-    public Equipment createEquipment(Equipment equipment) {
-        return equipmentRepository.save(equipment);
+    public Book createEquipment(Book book) {
+        return equipmentRepository.save(book);
     }
 
     @Transactional
@@ -73,18 +71,18 @@ public class TypeService {
     }
 
     @Transactional
-    public Equipment updateEquipment(Equipment equipment) {
-        Equipment updatingEquipment = equipmentRepository.findById(equipment.getId()).orElseThrow();
+    public Book updateEquipment(Book book) {
+        Book updatingBook = equipmentRepository.findById(book.getId()).orElseThrow();
 
-        updatingEquipment.setIdType(equipment.getIdType());
-        updatingEquipment.setModel(equipment.getModel());
-        updatingEquipment.setProducer(equipment.getProducer());
-        updatingEquipment.setMaximumLoad(equipment.getMaximumLoad());
-        updatingEquipment.setWeight(equipment.getWeight());
-        updatingEquipment.setRange(equipment.getRange());
-        updatingEquipment.setBatteryCapacity(equipment.getBatteryCapacity());
+        updatingBook.setIdType(book.getIdType());
+        updatingBook.setModel(book.getModel());
+        updatingBook.setProducer(book.getProducer());
+        updatingBook.setMaximumLoad(book.getMaximumLoad());
+        updatingBook.setWeight(book.getWeight());
+        updatingBook.setRange(book.getRange());
+        updatingBook.setBatteryCapacity(book.getBatteryCapacity());
 
-        return updatingEquipment;
+        return updatingBook;
     }
 
     public void deleteEquipmentType(long id) {

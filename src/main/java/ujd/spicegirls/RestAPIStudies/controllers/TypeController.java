@@ -4,10 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 import ujd.spicegirls.RestAPIStudies.controllers.dtos.TypeDto;
-import ujd.spicegirls.RestAPIStudies.models.Equipment;
-import ujd.spicegirls.RestAPIStudies.models.Payment;
+import ujd.spicegirls.RestAPIStudies.models.Book;
 import ujd.spicegirls.RestAPIStudies.models.Type;
-import ujd.spicegirls.RestAPIStudies.models.User;
 import ujd.spicegirls.RestAPIStudies.services.TypeService;
 
 import java.util.List;
@@ -44,8 +42,8 @@ public class TypeController {
     }
 
     @PostMapping("/types/equipments")
-    public Equipment createEquipment(@RequestBody Equipment equipment) {
-        return typeService.createEquipment(equipment);
+    public Book createEquipment(@RequestBody Book book) {
+        return typeService.createEquipment(book);
     }
 
     @PutMapping("/types")
@@ -54,8 +52,8 @@ public class TypeController {
     }
 
     @PutMapping("/types/equipments")
-    public Equipment updateEquipment(@RequestBody Equipment equipment) {
-        return typeService.updateEquipment(equipment);
+    public Book updateEquipment(@RequestBody Book book) {
+        return typeService.updateEquipment(book);
     }
 
     @DeleteMapping("/types/{id}")

@@ -18,5 +18,5 @@ public class Type {
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idType", updatable = false, insertable = false)
-    private List<Equipment> equipments;
+    private List<Book> books;
 }
