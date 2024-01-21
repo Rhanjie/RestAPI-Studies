@@ -8,41 +8,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ujd.spicegirls.RestAPIStudies.models.Book;
 import ujd.spicegirls.RestAPIStudies.models.Genre;
-import ujd.spicegirls.RestAPIStudies.repositories.EquipmentRepository;
-import ujd.spicegirls.RestAPIStudies.repositories.TypeRepository;
+import ujd.spicegirls.RestAPIStudies.repositories.BookRepository;
+import ujd.spicegirls.RestAPIStudies.repositories.GenreRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TypeService {
-    private final TypeRepository typeRepository;
-    private final EquipmentRepository equipmentRepository;
+public class GenreService {
+    private final GenreRepository genreRepository;
+    private final BookRepository bookRepository;
 
     private static final int PAGE_SIZE = 5;
 
-    @Cacheable(cacheNames = "EquipmentTypes")
-    public List<Genre> getEquipmentTypes(int page, Sort.Direction sort) {
-        return typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
+    @Cacheable(cacheNames = "BookGenres")
+    public List<Genre> getBookGenres(int page, Sort.Direction sort) {
+        return genreRepository.findAllGenres(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
     }
 
-    @Cacheable(cacheNames = "TypesWithEquipments")
-    public List<Genre> getTypesWithEquipments(int page, Sort.Direction sort) {
-        var types = typeRepository.findAllTypes(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
-        var ids = types.stream()
+    @Cacheable(cacheNames = "GenresWithBooks")
+    public List<Genre> getGenresWithBooks(int page, Sort.Direction sort) {
+        var genres = genreRepository.findAllGenres(PageRequest.of(page, PAGE_SIZE, Sort.by(sort, "id")));
+        var ids = genres.stream()
                 .map(Genre::getId)
                 .collect(Collectors.toList());
 
-        var equipments = equipmentRepository.findAllByIdTypeIn(ids);
-        types.forEach(user -> user.setEquipments(extractEquipment(equipments, user.getId())));
+        var books = bookRepository.findAllByIdGenreIn(ids);
+        genres.forEach(user -> user.setBooks(extractEquipment(books, user.getId())));
 
-        return types;
+        return genres;
     }
 
     @Cacheable(cacheNames = "SingleEquipmentType")
     public Genre getSingleEquipmentType(long id) {
-        return typeRepository.findById(id)
+        return genreRepository.findById(id)
                 .orElseThrow();
     }
 
@@ -53,16 +53,16 @@ public class TypeService {
     }
 
     public Genre createEquipmentType(Genre genre) {
-        return typeRepository.save(genre);
+        return genreRepository.save(genre);
     }
 
     public Book createEquipment(Book book) {
-        return equipmentRepository.save(book);
+        return bookRepository.save(book);
     }
 
     @Transactional
     public Genre updateEquipmentType(Genre genre) {
-        Genre updatingGenre = typeRepository.findById(genre.getId()).orElseThrow();
+        Genre updatingGenre = genreRepository.findById(genre.getId()).orElseThrow();
 
         updatingGenre.setName(genre.getName());
         updatingGenre.setWeight(genre.getWeight());
@@ -72,7 +72,7 @@ public class TypeService {
 
     @Transactional
     public Book updateEquipment(Book book) {
-        Book updatingBook = equipmentRepository.findById(book.getId()).orElseThrow();
+        Book updatingBook = bookRepository.findById(book.getId()).orElseThrow();
 
         updatingBook.setIdType(book.getIdType());
         updatingBook.setModel(book.getModel());
@@ -86,11 +86,11 @@ public class TypeService {
     }
 
     public void deleteEquipmentType(long id) {
-        typeRepository.deleteById(id);
+        genreRepository.deleteById(id);
     }
 
     public void deleteEquipment(long id) {
-        equipmentRepository.deleteById(id);
+        bookRepository.deleteById(id);
     }
 }
 

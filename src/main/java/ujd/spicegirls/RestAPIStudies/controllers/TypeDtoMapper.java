@@ -1,6 +1,6 @@
 package ujd.spicegirls.RestAPIStudies.controllers;
 
-import ujd.spicegirls.RestAPIStudies.controllers.dtos.TypeDto;
+import ujd.spicegirls.RestAPIStudies.controllers.dtos.GenreDto;
 import ujd.spicegirls.RestAPIStudies.models.Genre;
 
 import java.util.List;
@@ -11,14 +11,14 @@ public class TypeDtoMapper {
         //Prohibit the creation af the class object
     }
 
-    public static List<TypeDto> mapToTypeDtos(List<Genre> genres) {
+    public static List<GenreDto> mapToTypeDtos(List<Genre> genres) {
         return genres.stream()
                 .map(TypeDtoMapper::mapToTypeDto)
                 .collect(Collectors.toList());
     }
 
-    public static TypeDto mapToTypeDto(Genre genre) {
-        return TypeDto.builder()
+    public static GenreDto mapToTypeDto(Genre genre) {
+        return GenreDto.builder()
                 .id(genre.getId())
                 .name(genre.getName())
                 .weight(genre.getWeight())

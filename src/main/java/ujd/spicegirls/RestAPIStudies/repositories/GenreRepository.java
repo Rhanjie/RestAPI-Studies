@@ -9,7 +9,7 @@ import ujd.spicegirls.RestAPIStudies.models.Genre;
 import java.util.List;
 
 @Repository
-public interface TypeRepository extends JpaRepository<Genre, Long> {
+public interface GenreRepository extends JpaRepository<Genre, Long> {
     @Query("Select p From Type p")
-    List<Genre> findAllTypes(Pageable page);
+    List<Genre> findAllGenres(Pageable page);
 }

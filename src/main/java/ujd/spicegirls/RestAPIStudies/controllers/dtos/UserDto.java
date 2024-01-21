@@ -10,4 +10,5 @@ public class UserDto {
     private String name;
     private String surname;
     private long pesel;
+    private int age;
 }

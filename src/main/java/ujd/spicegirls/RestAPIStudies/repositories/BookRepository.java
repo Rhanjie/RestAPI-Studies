@@ -5,6 +5,6 @@ import ujd.spicegirls.RestAPIStudies.models.Book;
 
 import java.util.List;
 
-public interface EquipmentRepository extends JpaRepository<Book, Long> {
-    List<Book> findAllByIdTypeIn(List<Long> ids);
+public interface BookRepository extends JpaRepository<Book, Long> {
+    List<Book> findAllByIdGenreIn(List<Long> ids);
 }
