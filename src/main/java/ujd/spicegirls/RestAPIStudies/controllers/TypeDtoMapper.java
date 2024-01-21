@@ -21,7 +21,7 @@ public class TypeDtoMapper {
         return GenreDto.builder()
                 .id(genre.getId())
                 .name(genre.getName())
-                .weight(genre.getWeight())
+                .onlyForAdults(genre.getOnlyForAdults())
                 .build();
     }
 }

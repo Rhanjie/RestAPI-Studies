@@ -8,5 +8,5 @@ import lombok.Getter;
 public class GenreDto {
     private long id;
     private String name;
-    private float weight;
+    private Boolean onlyForAdults;
 }

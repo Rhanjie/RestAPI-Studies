@@ -78,7 +78,7 @@ public class UserService {
         Payment updatingPayment = paymentRepository.findById(payment.getId()).orElseThrow();
 
         updatingPayment.setIdUser(payment.getIdUser());
-        updatingPayment.setName(payment.getName());
+        updatingPayment.setIdBook(payment.getIdBook());
         updatingPayment.setExpirationDate(payment.getExpirationDate());
 
         return updatingPayment;

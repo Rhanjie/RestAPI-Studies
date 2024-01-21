@@ -48,7 +48,7 @@ public class GenreService {
 
     private List<Book> extractEquipment(List<Book> books, long id) {
         return books.stream()
-                .filter(book -> book.getIdType() == id)
+                .filter(book -> book.getIdGenre() == id)
                 .collect(Collectors.toList());
     }
 
@@ -65,7 +65,7 @@ public class GenreService {
         Genre updatingGenre = genreRepository.findById(genre.getId()).orElseThrow();
 
         updatingGenre.setName(genre.getName());
-        updatingGenre.setWeight(genre.getWeight());
+        updatingGenre.setOnlyForAdults(genre.getOnlyForAdults());
 
         return updatingGenre;
     }
@@ -74,13 +74,12 @@ public class GenreService {
     public Book updateEquipment(Book book) {
         Book updatingBook = bookRepository.findById(book.getId()).orElseThrow();
 
-        updatingBook.setIdType(book.getIdType());
-        updatingBook.setModel(book.getModel());
-        updatingBook.setProducer(book.getProducer());
-        updatingBook.setMaximumLoad(book.getMaximumLoad());
-        updatingBook.setWeight(book.getWeight());
-        updatingBook.setRange(book.getRange());
-        updatingBook.setBatteryCapacity(book.getBatteryCapacity());
+        updatingBook.setIdGenre(book.getIdGenre());
+        updatingBook.setTitle(book.getTitle());
+        updatingBook.setAuthor(book.getAuthor());
+        updatingBook.setPublisher(book.getPublisher());
+        updatingBook.setYear(book.getYear());
+        updatingBook.setCondition(book.getCondition());
 
         return updatingBook;
     }

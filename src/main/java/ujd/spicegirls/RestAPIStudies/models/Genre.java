@@ -14,7 +14,7 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private boolean onlyForAdults;
+    private Boolean onlyForAdults;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idType", updatable = false, insertable = false)
