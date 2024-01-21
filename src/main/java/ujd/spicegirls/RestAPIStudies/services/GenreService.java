@@ -35,33 +35,33 @@ public class GenreService {
                 .collect(Collectors.toList());
 
         var books = bookRepository.findAllByIdGenreIn(ids);
-        genres.forEach(user -> user.setBooks(extractEquipment(books, user.getId())));
+        genres.forEach(user -> user.setBooks(extractBook(books, user.getId())));
 
         return genres;
     }
 
     @Cacheable(cacheNames = "SingleEquipmentType")
-    public Genre getSingleEquipmentType(long id) {
+    public Genre getSingleBookGenre(long id) {
         return genreRepository.findById(id)
                 .orElseThrow();
     }
 
-    private List<Book> extractEquipment(List<Book> books, long id) {
+    private List<Book> extractBook(List<Book> books, long id) {
         return books.stream()
                 .filter(book -> book.getIdGenre() == id)
                 .collect(Collectors.toList());
     }
 
-    public Genre createEquipmentType(Genre genre) {
+    public Genre createBookGenre(Genre genre) {
         return genreRepository.save(genre);
     }
 
-    public Book createEquipment(Book book) {
+    public Book createBook(Book book) {
         return bookRepository.save(book);
     }
 
     @Transactional
-    public Genre updateEquipmentType(Genre genre) {
+    public Genre updateBookGenre(Genre genre) {
         Genre updatingGenre = genreRepository.findById(genre.getId()).orElseThrow();
 
         updatingGenre.setName(genre.getName());
@@ -71,7 +71,7 @@ public class GenreService {
     }
 
     @Transactional
-    public Book updateEquipment(Book book) {
+    public Book updateBook(Book book) {
         Book updatingBook = bookRepository.findById(book.getId()).orElseThrow();
 
         updatingBook.setIdGenre(book.getIdGenre());
@@ -84,11 +84,11 @@ public class GenreService {
         return updatingBook;
     }
 
-    public void deleteEquipmentType(long id) {
+    public void deleteBookGenre(long id) {
         genreRepository.deleteById(id);
     }
 
-    public void deleteEquipment(long id) {
+    public void deleteBook(long id) {
         bookRepository.deleteById(id);
     }
 }

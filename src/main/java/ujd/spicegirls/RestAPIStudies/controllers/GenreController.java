@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class TypeController {
+public class GenreController {
     private final GenreService genreService;
 
     @GetMapping("/genres")
@@ -20,7 +20,7 @@ public class TypeController {
         int pageNumber = (page != null) ? Math.abs(page) : 0;
         Sort.Direction sortDirection = (sort != null) ? sort : Sort.Direction.ASC;
 
-        return TypeDtoMapper.mapToTypeDtos(genreService.getBookGenres(pageNumber, sortDirection));
+        return GenreDtoMapper.mapToGenreDtos(genreService.getBookGenres(pageNumber, sortDirection));
     }
 
     @GetMapping("/genres/books")
@@ -33,37 +33,37 @@ public class TypeController {
 
     @GetMapping("/genres/{id}")
     public Genre getSingleEquipmentType(@PathVariable long id) {
-        return genreService.getSingleEquipmentType(id);
+        return genreService.getSingleBookGenre(id);
     }
 
     @PostMapping("/genres")
     public Genre createEquipmentType(@RequestBody Genre genre) {
-        return genreService.createEquipmentType(genre);
+        return genreService.createBookGenre(genre);
     }
 
     @PostMapping("/genres/books")
     public Book createEquipment(@RequestBody Book book) {
-        return genreService.createEquipment(book);
+        return genreService.createBook(book);
     }
 
     @PutMapping("/genres")
     public Genre updateEquipmentType(@RequestBody Genre genre) {
-        return genreService.updateEquipmentType(genre);
+        return genreService.updateBookGenre(genre);
     }
 
     @PutMapping("/genres/books")
     public Book updateEquipment(@RequestBody Book book) {
-        return genreService.updateEquipment(book);
+        return genreService.updateBook(book);
     }
 
     @DeleteMapping("/genres/{id}")
     public void deleteEquipmentType(@PathVariable long id) {
-        genreService.deleteEquipmentType(id);
+        genreService.deleteBookGenre(id);
     }
 
     @DeleteMapping("/genres/books/{id}")
     public void deleteEquipment(@PathVariable long id) {
-        genreService.deleteEquipment(id);
+        genreService.deleteBook(id);
     }
 }
 
