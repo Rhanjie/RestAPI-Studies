@@ -121,11 +121,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- Team -->
+## Meet the team - Spice Girls UJD
 
 Marcin Dyla - [RhAnjiE](https://github.com/Rhanjie) - irhanjie@gmail.com
 <br>
-Norbert Ledwoch - [Quiloch](https://github.com/Quiloch)
+Natalia Praska - [Essmira](https://github.com/Essmira) - natalia.praska73@gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
