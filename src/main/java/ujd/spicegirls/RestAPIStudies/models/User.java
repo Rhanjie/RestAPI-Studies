@@ -16,6 +16,7 @@ public class User {
     private String name;
     private String surname;
     private long pesel;
+    private int age;
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "idUser", updatable = false, insertable = false)
