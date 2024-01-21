@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class TypeDto {
+public class GenreDto {
     private long id;
     private String name;
-    private float weight;
+    private Boolean onlyForAdults;
 }

@@ -11,15 +11,14 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-public class Equipment {
+public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long idType;
-    private String model;
-    private String producer;
-    private int maximumLoad;
-    private float weight;
-    private String range;
-    private String batteryCapacity;
+    private long idGenre;
+    private String title;
+    private String author;
+    private String publisher;
+    private int year;
+    private String condition;
 }

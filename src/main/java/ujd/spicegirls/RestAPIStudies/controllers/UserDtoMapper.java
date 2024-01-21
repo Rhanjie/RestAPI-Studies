@@ -23,6 +23,7 @@ public class UserDtoMapper {
                 .name(user.getName())
                 .surname(user.getSurname())
                 .pesel(user.getPesel())
+                .age(user.getAge())
                 .build();
     }
 }
