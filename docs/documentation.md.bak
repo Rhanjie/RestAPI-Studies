@@ -6,7 +6,7 @@
 </div>
 <br />
 
-## 1.Communication
+## Communication
 
 Communication with the database is based on the requests in the form of appropriate urls:
 ```http://<server-ip>:<port>/<endpoint>```, for example:
@@ -21,7 +21,7 @@ http://localhost:8080/genres/books?page=1&sort=DESC
 
 
 
-## 2.Response statuses
+## Response statuses
 
 The HTTP protocol provides many response statuses that we can provide to the client depending on the progress of their request. There are 5 basic groups:
 
@@ -37,7 +37,7 @@ The following is a download that provides information on what code should be ret
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 3.Database structure
+## Database structure
 
 The used database has the same structure as in the screenshot below:
 
@@ -45,7 +45,7 @@ The used database has the same structure as in the screenshot below:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## 4.Example requests:
+## Example requests:
 
 ```
 GET http://localhost:8080/users/5
